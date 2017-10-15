@@ -3,6 +3,13 @@ package com.example.android.miwok;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.LinearLayout;
+import android.widget.ListView;
+import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class NumbersActivity extends AppCompatActivity {
 
@@ -12,10 +19,17 @@ public class NumbersActivity extends AppCompatActivity {
         setContentView(R.layout.activity_numbers);
 
         //Add the numbers array here
-        String[] words = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
+        String[] oldList = {"one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten"};
 
-        //Log a couple of values for lesson2, exercise 5
-        Log.v("NumbersActivityLogTag", "Word are: " + words[0] + " " + words[1] + " " + words[2] + " " + words[3] + " " + words[4] + " " + words[5] + " " + words[6] + " " + words[7] + " " + words[8] + " " + words[9] );
+        ArrayList<String> words = new ArrayList<String>();
+        words.addAll(Arrays.asList(oldList));
+
+
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, words);
+
+        ListView listView = (ListView) findViewById(R.id.list);
+
+        listView.setAdapter(itemsAdapter);
 
     }
 }
