@@ -26,10 +26,10 @@ public class NumbersActivity extends AppCompatActivity {
         words.addAll(Arrays.asList(oldList));
 
 
-        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, words);
+        ArrayAdapter<String> itemsAdapter = new ArrayAdapter<>(this, R.layout.list_item, words);
 
         //ListView listView = (ListView) findViewById(R.id.list);
-        GridView listView = (GridView) findViewById(R.id.list);
+        ListView listView = (ListView) findViewById(R.id.list);
         listView.setAdapter(itemsAdapter);
 
     }
