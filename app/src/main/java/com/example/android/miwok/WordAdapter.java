@@ -6,6 +6,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -54,6 +56,26 @@ public class WordAdapter extends ArrayAdapter<Word>{
             // Otherwise hide the ImageView (set visibility to GONE)
             imageView.setVisibility(View.GONE);
         }
+
+
+        //Set the color of the items same as the one in the menu:
+        //LinearLayout textSpace = (LinearLayout) listItemView.findViewById(R.id.text_space);
+        //textSpace.setBackgroundResource(R.color.category_numbers);
+
+        if (this.getContext().toString().contains("NumbersActivity")){
+            listItemView.setBackgroundResource(R.color.category_numbers);
+        }
+        else if (this.getContext().toString().contains("ColorsActivity")){
+            listItemView.setBackgroundResource(R.color.category_colors);
+        }
+        else if (this.getContext().toString().contains("FamilyActivity")){
+            listItemView.setBackgroundResource(R.color.category_family);
+        }
+        else if (this.getContext().toString().contains("PhrasesActivity")){
+            listItemView.setBackgroundResource(R.color.category_phrases);
+        }
+
+
         //return super.getView(position, convertView, parent);
         return listItemView;
     }
