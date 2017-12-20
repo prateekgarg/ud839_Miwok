@@ -19,6 +19,7 @@ import java.util.ArrayList;
 public class WordAdapter extends ArrayAdapter<Word>{
 
     private static final String LOG_TAG = WordAdapter.class.getSimpleName();
+    private int mcolorResourceID = -1;
     //Constructor
     public WordAdapter(Activity context, ArrayList<Word> data){
         // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
@@ -26,6 +27,14 @@ public class WordAdapter extends ArrayAdapter<Word>{
         // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
         // going to use this second argument, so it can be any value. Here, we used 0.
         super(context, 0, data);
+    }
+    public WordAdapter(Activity context, ArrayList<Word> data, int colorResource){
+        // Here, we initialize the ArrayAdapter's internal storage for the context and the list.
+        // the second argument is used when the ArrayAdapter is populating a single TextView.
+        // Because this is a custom adapter for two TextViews and an ImageView, the adapter is not
+        // going to use this second argument, so it can be any value. Here, we used 0.
+        super(context, 0, data);
+        mcolorResourceID = colorResource;
     }
 
     @Override
@@ -57,24 +66,23 @@ public class WordAdapter extends ArrayAdapter<Word>{
             imageView.setVisibility(View.GONE);
         }
 
-
-        //Set the color of the items same as the one in the menu:
-        LinearLayout textSpace = (LinearLayout) listItemView.findViewById(R.id.text_space);
-        textSpace.setBackgroundResource(R.color.category_numbers);
-
-        if (this.getContext().toString().contains("NumbersActivity")){
-            textSpace.setBackgroundResource(R.color.category_numbers);
+        if (mcolorResourceID != -1) {
+            //Set the color of the items same as the one in the menu:
+            LinearLayout textSpace = (LinearLayout) listItemView.findViewById(R.id.text_space);
+            textSpace.setBackgroundResource(mcolorResourceID);
+            /*if (this.getContext().toString().contains("NumbersActivity")){
+                textSpace.setBackgroundResource(R.color.category_numbers);
+            }
+            else if (this.getContext().toString().contains("ColorsActivity")){
+                textSpace.setBackgroundResource(R.color.category_colors);
+            }
+            else if (this.getContext().toString().contains("FamilyActivity")){
+                textSpace.setBackgroundResource(R.color.category_family);
+            }
+            else if (this.getContext().toString().contains("PhrasesActivity")){
+                textSpace.setBackgroundResource(R.color.category_phrases);
+            }*/
         }
-        else if (this.getContext().toString().contains("ColorsActivity")){
-            textSpace.setBackgroundResource(R.color.category_colors);
-        }
-        else if (this.getContext().toString().contains("FamilyActivity")){
-            textSpace.setBackgroundResource(R.color.category_family);
-        }
-        else if (this.getContext().toString().contains("PhrasesActivity")){
-            textSpace.setBackgroundResource(R.color.category_phrases);
-        }
-
 
         //return super.getView(position, convertView, parent);
         return listItemView;
