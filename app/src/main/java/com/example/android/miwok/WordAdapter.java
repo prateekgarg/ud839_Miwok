@@ -59,20 +59,20 @@ public class WordAdapter extends ArrayAdapter<Word>{
 
 
         //Set the color of the items same as the one in the menu:
-        //LinearLayout textSpace = (LinearLayout) listItemView.findViewById(R.id.text_space);
-        //textSpace.setBackgroundResource(R.color.category_numbers);
+        LinearLayout textSpace = (LinearLayout) listItemView.findViewById(R.id.text_space);
+        textSpace.setBackgroundResource(R.color.category_numbers);
 
         if (this.getContext().toString().contains("NumbersActivity")){
-            listItemView.setBackgroundResource(R.color.category_numbers);
+            textSpace.setBackgroundResource(R.color.category_numbers);
         }
         else if (this.getContext().toString().contains("ColorsActivity")){
-            listItemView.setBackgroundResource(R.color.category_colors);
+            textSpace.setBackgroundResource(R.color.category_colors);
         }
         else if (this.getContext().toString().contains("FamilyActivity")){
-            listItemView.setBackgroundResource(R.color.category_family);
+            textSpace.setBackgroundResource(R.color.category_family);
         }
         else if (this.getContext().toString().contains("PhrasesActivity")){
-            listItemView.setBackgroundResource(R.color.category_phrases);
+            textSpace.setBackgroundResource(R.color.category_phrases);
         }
 
 
